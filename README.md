@@ -4,7 +4,7 @@
 
 ## Features: Because Your Ears Deserves the Best
 
-* **Automated Downloads:**  Like a musical ninja, re-command stealthily downloads [ListenBrainz](https://github.com/metabrainz/listenbrainz-server) recommended tracks (through [yt-dlp](https://github.com/yt-dlp/yt-dlp), depositing them directly into your Navidrome library. No clicking, no fuss, just pure musical magic.
+* **Automated Downloads:**  Like a musical ninja, re-command stealthily downloads [ListenBrainz](https://github.com/metabrainz/listenbrainz-server) recommended tracks (through [yt-dlp](https://github.com/yt-dlp/yt-dlp)), depositing them directly into your Navidrome library. No clicking, no fuss, just pure musical magic.
 * **Smart Tagging:**  Forget manual tagging! re-command is a metadata wizard, automatically tagging your new tunes with all the essential info: artist, title, album, release date, and even the mystical MusicBrainz ID.
 * **Smart Playlist Harmony:**  Each downloaded track gets a special "recommendation" tag, making it easy to create dynamic weekly playlists in Navidrome or your favorite player.  It's like having a personal mixtape delivered fresh every week.
 * **Library Cleanup Crew:**  Got some musical regrets?  re-command acts as your personal music librarian, discreetly removing disliked or unrated tracks from previous recommendations.  Only the 4-5 star gems remain, ensuring your library is a sanctuary of sonic bliss.
