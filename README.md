@@ -17,7 +17,16 @@
 
 * **Python 3:** The lifeblood of the operation.
 * **Required Libraries:** `pip install requests tqdm`
-* **External Tools:** `yt-dlp` (the download master) and `kid3-cli` (the tagging titan). Installation instructions below!
+* **External Tools:** `yt-dlp` (the download master) and `kid3-cli` (the tagging titan) :
+```bash
+# Install yt-dlp (choose your preferred method)
+sudo apt install yt-dlp # Example for Debian/Ubuntu
+# or
+pip install yt-dlp
+
+sudo apt install kid3-cli # Example for Debian/Ubuntu
+yay -S kid3-common # Example for Arch
+```
 * **Navidrome Server:** Your musical kingdom.
 * **ListenBrainz Account:** Your source of musical wisdom.
 * **Cookies.txt:** A secret file containing your YouTube Music cookies.  (Don't worry, we won't tell anyone.)  This helps yt-dlp bypass download restrictions. Browser extensions like "Get cookies.txt" can help you obtain this precious artifact.  (OAuth is not supported anymore by yt-dlp, sorry!)
@@ -61,7 +70,7 @@ And then add this line at the bottom of the file :
 
 Got ideas?  Found a bug?  Contributions are always welcome!
 
-## Future Developments (by priority order): The Musical Journey Continues
+## Future Developments, by priority order: The Musical Journey Continues
 
 * **Album Art Glam:**  Because music isn't just about sound.
 * **Liked Songs Feedback:**  Spread the love to ListenBrainz for your favorite tracks.
