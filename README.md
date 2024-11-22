@@ -7,7 +7,6 @@
 * **Automated Downloads:**  Like a musical ninja, re-command stealthily downloads recommended tracks from ListenBrainz, depositing them directly into your Navidrome library. No clicking, no fuss, just pure musical magic.
 * **Smart Tagging:**  Forget manual tagging! re-command is a metadata wizard, automatically tagging your new tunes with all the essential info: artist, title, album, release date, and even the mystical MusicBrainz ID.
 * **Smart Playlist Harmony:**  Each downloaded track gets a special "recommendation" tag, making it easy to create dynamic weekly playlists in Navidrome or your favorite player.  It's like having a personal mixtape delivered fresh every week.
-* **Album Art Glam:**  Because music isn't just about sound, re-command fetches and embeds album art, giving your library the visual flair it deserves. (Album art not guaranteed, but we'll try our best!)
 * **Library Cleanup Crew:**  Got some musical regrets?  re-command acts as your personal music librarian, discreetly removing disliked or unrated tracks from previous recommendations.  Only the 4-5 star gems remain, ensuring your library is a sanctuary of sonic bliss.
 * **ListenBrainz Whisperer:**  re-command provides feedback to ListenBrainz for disliked tracks, helping the algorithms learn your taste and refine future recommendations. You are done listening that terrible track again and again.
 * **Progress Tracking:**  No more guessing games!  A snazzy progress bar keeps you updated on downloads and library processing.  You'll know exactly when your next musical feast is ready.
@@ -62,8 +61,9 @@ And then add this line at the bottom of the file :
 
 Got ideas?  Found a bug?  Contributions are always welcome!
 
-## Future Developments: The Musical Journey Continues
+## Future Developments (by priority order): The Musical Journey Continues
 
-* **Last.fm Integration:**  Because two sources of musical wisdom are better than one.
+* **Album Art Glam:**  Because music isn't just about sound.
 * **Liked Songs Feedback:**  Spread the love to ListenBrainz for your favorite tracks.
+* **Last.fm Integration:**  Because two sources of musical wisdom are better than one.
 * **More Testing:**  Because we want everything to be pitch-perfect.
