@@ -1,6 +1,6 @@
 # re-command: Unleash Your Inner Music Maestro (with a Little Help from ListenBrainz)
 
-🎶 Ready to ditch your friends recommendations and let the algorithms curate your next sonic adventure?  re-command is your personal musical sherpa, guiding you through the treacherous terrain of ListenBrainz recommendations and seamlessly integrating them into your Navidrome music kingdom.  Think of it as a weekly musical surprise party, delivered right to your hard drive. (But without the awkward small talk and paper hats.)
+🎶 Ready to ditch your friends recommendations and let the algorithms curate your next sonic adventure?  re-command is your personal musical sherpa, guiding you through the treacherous terrain of ListenBrainz recommendations and seamlessly integrating them into your Navidrome music kingdom.  Think of it as a weekly musical surprise party, delivered right to your hard drive.
 
 ## Features: Because Your Ears Deserves the Best
 
@@ -48,6 +48,11 @@ Just run `python3 re-command.py`.  The script will work its magic, checking for 
 **Pro Tip:** Set up a cron job to run this weekly (like a musical alarm clock).
 
 ```bash
+chmod +X re-command.py
+crontab -e
+```
+And then add this line at the bottom of the file :
+```
 0 23 * * 1 /usr/bin/python3 /home/your/script/location/re-command.py >> home/your/script/location/re-command.log 2>&1
 ```
 
