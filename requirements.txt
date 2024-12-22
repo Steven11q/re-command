@@ -1,4 +1,4 @@
 requests
-yt-dlp
-kid3-cli
 tqdm
+deemix
+pylast
