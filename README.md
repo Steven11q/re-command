@@ -3,6 +3,7 @@
 
 This is a fork that has been modified to reflect the changes I made to get it to run properly on my machine.
 I have also modified it to use Streamrip for stability
+And to call beets to import your library
 I have removed the last FM functionality
 
 IE: This one works, but probably not well
@@ -10,7 +11,6 @@ IE: This one works, but probably not well
 This is by no means written well, and I hacked it together in a few hours because I wanted this functionality. 
 
 TODO:
-I might in the future add functionality to automatically call Beets to organize the songs and update metadata.
 Add intergration with Lidarr/Navidrome or something so that this doesent have to get called with a chron job
 
 
