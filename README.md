@@ -2,6 +2,9 @@
 # re-command: Automated Music Recommendation System for Navidrome
 
 This has been modified to reflect the changes I made to get it to run properly on my machine.
+I have also modified it to use Streamrip instead of a nonexistant package to get the urls from deezer
+As is this will only import songs from deezer using the playlist from Listenbrainz
+
 
 `re-command` is a Python-based tool designed to enhance your Navidrome music experience by automatically downloading music recommendations with [Deemix](https://deemix.org/) from [ListenBrainz](https://github.com/metabrainz/listenbrainz-server) and [Last.fm](https://www.last.fm/music/+recommended/). It acts as your behind-the-scenes music curator, downloading, tagging, and organizing recommended tracks, while also cleaning up your library based on your ratings.
 
