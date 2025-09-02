@@ -2,3 +2,4 @@ requests
 tqdm
 deemix
 pylast
+streamrip
