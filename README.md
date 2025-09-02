@@ -24,7 +24,7 @@ As is this will only import songs from deezer using the playlist from Listenbrai
 *   **Python 3.x**
 *   **Required Python Libraries:**
     ```bash
-    pip install requests tqdm pylast deemix
+    pip install requests tqdm pylast deemix streamrip
     ```
     or simply :
     ```bash
