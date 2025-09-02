@@ -4,7 +4,7 @@ import time
 import os
 import utils
 from tqdm import tqdm
-import deezer_api
+import deemix as deezer_api
 import subprocess
 import requests
 
