@@ -2,8 +2,8 @@
 # re-command-forked: Automated Music Recommendation System for Navidrome
 
 This is a fork that has been modified to reflect the changes I made to get it to run properly on my machine.
-I have also modified it to use Streamrip instead of a nonexistant package to get the urls from deezer
-As is this will only import songs from deezer using the playlist from Listenbrainz, but if anyone feels like it theyre free to modify it to add more functionality
+I have also modified it to use Streamrip for stability
+I have removed the last FM functionality
 
 IE: This one works, but probably not well
 
@@ -51,7 +51,6 @@ Add intergration with Lidarr/Navidrome or something so that this doesent have to
     ```
 *   **Navidrome Server:** A running Navidrome instance.
 *   **ListenBrainz Account  (Optional):**  A ListenBrainz user account.
-*   **Last.fm Account (Optional):** A Last.fm user account, for enhanced music discovery.
 *   **Deezer Account (Free or Premium) & ARL Token:** Your Deezer ARL token for deemix to function. You can typically find it in your browser dev tools in the "Applications" tab under "Cookies". Free account means only 128 kbps MP3 tracks.
 
 ## Setup
