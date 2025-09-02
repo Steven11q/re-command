@@ -1,10 +1,24 @@
 import requests
 import time
 import utils
+import asyncio
 from tqdm import tqdm
 import subprocess
 import os
-import deemix as deezer_api
+from streamrip.client import DeezerClient
+from streamrip.config import Config
+from streamrip.media import Track, PendingSingle
+from streamrip.db import Dummy, Database
+#from streamrip.rip import Rip
+
+#config = Config.defaults()
+#config.session.qobuz.email_or_userid = "YOUR_EMAIL"
+#config.session.qobuz.password_or_token = "YOUR_PASSWORD"
+#c = QobuzClient(config)
+#my_deezer_client = streamrip.clients.DeezerClient()
+
+global c
+
 
 
 
@@ -40,6 +54,36 @@ def get_latest_playlist_name():
     # If "Weekly Exploration" is not found, raise an error or return a default value
     print("Error: 'Weekly Exploration' playlist not found.")
     return None
+
+
+#PITA two
+async def meow(query: str,song_info ):
+
+    if(c.logged_in == False):
+        config2 = Config.defaults()
+        import config # Import config here
+        config2.session.deezer.arl = config.DEEZER_ARL
+        config2.session.downloads.folder = config.MUSIC_LIBRARY_PATH
+        config2.session.deezer.quality = 0
+        c = DeezerClient(config2)
+        await c.login()
+    try:
+        
+        c_track = await c.search("track", query)
+        a_id = c_track[0].get('data')[0].get('id')
+        db = Database(downloads=Dummy(), failed=Dummy())
+        a = PendingSingle(id = a_id,  client = c, config = config2,  db = db)
+        resolved_album = await a.resolve()
+        await resolved_album.rip()        
+        
+    except:
+        print(f"Error downloading {song_info['artist']} - {song_info['title']}")
+        
+
+
+    #await c.close()
+    #idk why it wont let me close the session?
+    #if someone figures this out plz fix it :3
 
 def get_recommendation_playlist(username, **params):
     """Fetches the recommendation playlist from ListenBrainz."""
@@ -225,18 +269,24 @@ def download_new_playlist_songs_deemix():
         downloaded_songs = []
 
         for song_info in tqdm(songs_to_download, desc="Downloading Songs", unit="song"):
-            try:
+            #try:
+                
                 # Get Deezer track link using the new function
-                deezer_link = deezer_api.get_deezer_track_link(song_info['artist'], song_info['title'])
-
-                if deezer_link:
-                    download_track_deemix(deezer_link, song_info['artist'], song_info['title'], song_info['album'], song_info['release_date'], song_info['recording_mbid'], song_info['release_mbid'], config.MUSIC_LIBRARY_PATH)
-                    downloaded_songs.append(f"{song_info['artist']} - {song_info['title']}")
-                    time.sleep(1)  # Consider removing or adjusting the sleep
-                else:
-                    print(f"Skipping download for {song_info['artist']} - {song_info['title']} (no Deezer link found).")
-            except Exception as e:
-                print(f"Error downloading {song_info['artist']} - {song_info['title']}: {e}")
+                query = "{} {}".format(song_info['artist'],song_info['title'])
+                asyncio.run(meow(query, song_info))
+                
+                #asyncio.create_task(meow("{} {}".format(song_info['artist'],song_info['title']))).result()
+                
+                #deezer_link = deezer_api.get_deezer_track_link(song_info['artist'], song_info['title']
+                #this is the part that was being a PITA
+                #if deezer_link:
+                #    download_track_deemix(deezer_link, song_info['artist'], song_info['title'], song_info['album'], song_info['release_date'], song_info['recording_mbid'], song_info['release_mbid'], config.MUSIC_LIBRARY_PATH)
+                #    downloaded_songs.append(f"{song_info['artist']} - {song_info['title']}")
+                #    time.sleep(1)  # Consider removing or adjusting the sleep
+                #else:
+                #    print(f"Skipping download for {song_info['artist']} - {song_info['title']} (no Deezer link found).")
+            #except Exception as e:
+                #print(f"Error downloading {song_info['artist']} - {song_info['title']}: {e}")
 
         print("\nDownloaded the following songs:")
         for song in downloaded_songs:
