@@ -28,12 +28,6 @@ def main():
     else:
         print("ListenBrainz playlist has not changed. Skipping download.")
 
-    # Last.fm authentication and download
-    lastfm_network = lastfm_api.authenticate_lastfm()
-    if lastfm_network:
-        lastfm_api.download_new_playlist_songs_deemix_lastfm(lastfm_network)
-    else:
-        print("Failed to authenticate with Last.fm. Cannot download recommendations.")
 
     # Parse Navidrome library and provide feedback to ListenBrainz
     salt, token = navidrome_api.get_navidrome_auth_params()
