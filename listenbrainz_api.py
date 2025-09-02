@@ -4,7 +4,7 @@ import utils
 from tqdm import tqdm
 import subprocess
 import os
-import deezer_api
+import deemix as deezer_api
 
 
 
