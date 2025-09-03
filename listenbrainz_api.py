@@ -7,8 +7,9 @@ import subprocess
 import os
 from streamrip.client import DeezerClient
 from streamrip.config import Config
-from streamrip.media import Track, PendingSingle
+from streamrip.media import  PendingSingle
 from streamrip.db import Dummy, Database
+
 #from streamrip.rip import Rip
 
 #config = Config.defaults()
@@ -18,6 +19,10 @@ from streamrip.db import Dummy, Database
 #my_deezer_client = streamrip.clients.DeezerClient()
 
 global c
+global config2
+
+
+
 
 
 
@@ -56,17 +61,16 @@ def get_latest_playlist_name():
     return None
 
 
+
 #PITA two
 async def meow(query: str,song_info ):
-
-    if(c.logged_in == False):
-        config2 = Config.defaults()
-        import config # Import config here
-        config2.session.deezer.arl = config.DEEZER_ARL
-        config2.session.downloads.folder = config.MUSIC_LIBRARY_PATH
-        config2.session.deezer.quality = 0
-        c = DeezerClient(config2)
-        await c.login()
+    config2 = Config.defaults()
+    import config # Import config here
+    config2.session.deezer.arl = config.DEEZER_ARL
+    config2.session.downloads.folder = config.MUSIC_LIBRARY_PATH
+    config2.session.deezer.quality = 0
+    c = DeezerClient(config2)
+    await c.login()
     try:
         
         c_track = await c.search("track", query)
@@ -74,10 +78,12 @@ async def meow(query: str,song_info ):
         db = Database(downloads=Dummy(), failed=Dummy())
         a = PendingSingle(id = a_id,  client = c, config = config2,  db = db)
         resolved_album = await a.resolve()
-        await resolved_album.rip()        
-        
+        await resolved_album.rip()      
     except:
         print(f"Error downloading {song_info['artist']} - {song_info['title']}")
+        #time.sleep(1)
+
+    await c.session.close()
         
 
 
@@ -267,21 +273,20 @@ def download_new_playlist_songs_deemix():
             print(f"- {song['artist']} - {song['title']} from album {song['album']}")
 
         downloaded_songs = []
-
+        #asyncio.run(woof())
         for song_info in tqdm(songs_to_download, desc="Downloading Songs", unit="song"):
             #try:
                 
                 # Get Deezer track link using the new function
                 query = "{} {}".format(song_info['artist'],song_info['title'])
+                asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
                 asyncio.run(meow(query, song_info))
-                
-                #asyncio.create_task(meow("{} {}".format(song_info['artist'],song_info['title']))).result()
+                #downloaded_songs.append(f"{song_info['artist']} - {song_info['title']}")
                 
                 #deezer_link = deezer_api.get_deezer_track_link(song_info['artist'], song_info['title']
                 #this is the part that was being a PITA
                 #if deezer_link:
                 #    download_track_deemix(deezer_link, song_info['artist'], song_info['title'], song_info['album'], song_info['release_date'], song_info['recording_mbid'], song_info['release_mbid'], config.MUSIC_LIBRARY_PATH)
-                #    downloaded_songs.append(f"{song_info['artist']} - {song_info['title']}")
                 #    time.sleep(1)  # Consider removing or adjusting the sleep
                 #else:
                 #    print(f"Skipping download for {song_info['artist']} - {song_info['title']} (no Deezer link found).")
@@ -291,6 +296,7 @@ def download_new_playlist_songs_deemix():
         print("\nDownloaded the following songs:")
         for song in downloaded_songs:
             print(f"- {song}")
+        #downloaded_songs.append(f"{song_info['artist']} - {song_info['title']}")
 
     else:
         print("\nNo songs were downloaded from the playlist.")
