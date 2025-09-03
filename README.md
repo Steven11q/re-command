@@ -10,6 +10,9 @@ IE: This one works, but probably not well
 
 This is by no means written well, and I hacked it together in a few hours because I wanted this functionality. 
 
+
+
+
 TODO:
 Add intergration with Lidarr/Navidrome or something so that this doesent have to get called with a chron job
 
@@ -38,8 +41,6 @@ Add intergration with Lidarr/Navidrome or something so that this doesent have to
     ```bash
     pip install -r requirements.txt
     ```
-*   **External Tools:**
-    *   `kid3-cli` (for audio file tagging)
 
     Installation examples (may vary depending on your OS):
     ```bash
@@ -51,6 +52,7 @@ Add intergration with Lidarr/Navidrome or something so that this doesent have to
     ```
 *   **Navidrome Server:** A running Navidrome instance.
 *   **ListenBrainz Account  (Optional):**  A ListenBrainz user account.
+*   ***configured Beet:** Have a music library folder, and beet set up to import into it. Also prepare a temporary music library for the script to download to
 *   **Deezer Account (Free or Premium) & ARL Token:** Your Deezer ARL token for deemix to function. You can typically find it in your browser dev tools in the "Applications" tab under "Cookies". Free account means only 128 kbps MP3 tracks.
 
 ## Setup
@@ -67,7 +69,6 @@ Add intergration with Lidarr/Navidrome or something so that this doesent have to
     ```
 
 3. **Configuration:**
-
     *   **First-time setup:** Run the script once (`python3 re-command.py`). It will detect that `config.py` is missing and guide you through an interactive setup process to create it.
 
     *   **Manual Configuration (Optional):** If you prefer, you can create `config.py` manually. Use the following template:
