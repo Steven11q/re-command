@@ -96,7 +96,7 @@ def process_navidrome_library(salt, token):
             song_path = os.path.join(config.MUSIC_LIBRARY_PATH, song_details['path'])
             user_rating = song_details.get('userRating', 0)
 
-            if song_details['comment'] == config.TARGET_COMMENT and config.LISTENBRAINZ_ENABLED:  # Listenbrainz
+            if song_details['comment'] == config.TARGET_COMMENT:  # Listenbrainz
                 if user_rating >= 4:  # Loved
                     update_song_comment(song_path, "")
 
@@ -105,14 +105,6 @@ def process_navidrome_library(salt, token):
                     deleted_songs.append(f"{song_details['artist']} - {song_details['title']}")
                     if 'musicBrainzId' in song_details and song_details['musicBrainzId'] and user_rating == 1:
                         listenbrainz_api.submit_feedback(song_details['musicBrainzId'], 1)  # Submit negative feedback if rating is 1
-
-            elif song_details['comment'] == config.LASTFM_TARGET_COMMENT and config.LASTFM_ENABLED:  # Lastfm
-                if user_rating >= 4:  # Loved
-                    update_song_comment(song_path, "")
-
-                elif user_rating <= 3:  # Disliked or no rating
-                    delete_song(song_path)
-                    deleted_songs.append(f"{song_details['artist']} - {song_details['title']}")
 
     if deleted_songs:
         print("Deleting the following songs from last week recommendation playlist:")
